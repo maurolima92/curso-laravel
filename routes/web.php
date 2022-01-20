@@ -14,9 +14,13 @@ Route::delete('posts/{id}',[PostController::class, 'destroy'])->name('posts.dest
 Route::any('/post/search',[PostController::class, 'search'])->name('posts.search');
 
 
+Route::get('/dashboad', function(){
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+require __DIR__.'/auth.php';
